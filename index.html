@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi dan Latihan Soal TKA Kimia SMA 2026 - Fakhrunas Hidayat, M.Pd.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- MathJax Configuration for Chemistry & Math formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .formula-box {
+            background-color: #f1f5f9;
+            border-left: 4px solid #2563eb;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .example-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="text-slate-800 h-screen flex flex-col overflow-hidden">
+
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg z-20 flex-shrink-0">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/10 p-2 rounded-lg backdrop-blur-md">
+                    <i class="fas fa-flask text-2xl text-yellow-300"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold tracking-tight">Materi & Latihan Soal TKA Kimia SMA 2026</h1>
+                    <p class="text-xs md:text-sm text-blue-100 flex items-center gap-1">
+                        <i class="fas fa-user-tie text-xs"></i> Pengampu: <span class="font-semibold text-white">Fakhrunas Hidayat, M.Pd.</span>
+                    </p>
+                </div>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl p-2 rounded hover:bg-white/10 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden relative">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="bg-white w-full md:w-80 border-r border-slate-200 overflow-y-auto flex-shrink-0 transition-all duration-300 transform -translate-x-full md:translate-x-0 absolute md:relative z-30 h-full shadow-lg md:shadow-none">
+            <div class="p-4 flex justify-between items-center md:hidden border-b border-slate-100 bg-slate-50">
+                <span class="font-bold text-slate-700 flex items-center gap-2"><i class="fas fa-list-ol text-blue-600"></i> Daftar Pertemuan</span>
+                <button id="close-sidebar-btn" class="text-slate-500 hover:text-red-500 p-1">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-3 bg-blue-50/50 border-b border-slate-100">
+                <p class="text-xs font-semibold text-blue-800 uppercase tracking-wider">Silabus Pembelajaran</p>
+            </div>
+            <ul class="divide-y divide-slate-100" id="nav-list">
+                <!-- Navigation items loaded via JS -->
+            </ul>
+        </nav>
+
+        <!-- Main Content Panel -->
+        <main class="flex-1 overflow-y-auto bg-slate-50 p-3 md:p-6 relative w-full" id="main-scroll">
+            <!-- Sidebar backdrop for mobile -->
+            <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-20 hidden md:hidden"></div>
+            
+            <div id="main-content" class="max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200/80 shadow-sm p-4 md:p-8 min-h-full flex flex-col justify-between">
+                
+                <div id="welcome-screen" class="text-center py-12 md:py-20 my-auto">
+                    <div class="w-24 h-24 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <i class="fas fa-atom text-5xl animate-spin-slow"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3">Selamat Datang di Portal Pembelajaran Kimia</h2>
+                    <p class="text-sm md:text-base text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">
+                        Modul interaktif ini menyajikan ringkasan konsep, rumus lengkap, contoh soal pembahasan, serta latihan TKA terstandar (Literasi & Numerasi) karya <strong>Fakhrunas Hidayat, M.Pd.</strong>
+                    </p>
+                    <button onclick="selectFirstMeeting()" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-200 transform hover:-translate-y-0.5">
+                        <span>Mulai Pertemuan 1</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div id="meeting-content" class="hidden flex-1 flex flex-col">
+                    <div class="border-b border-slate-200 pb-4 mb-6">
+                        <span id="meeting-badge" class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-2">Pertemuan 1</span>
+                        <h2 id="meeting-title" class="text-2xl font-bold text-slate-800">Judul Pertemuan</h2>
+                    </div>
+
+                    <!-- Navigation Submenu Tabs -->
+                    <div class="flex border-b border-slate-200 mb-6 bg-slate-50 p-1 rounded-xl">
+                        <button class="submenu-tab flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold text-blue-600 bg-white shadow-sm transition-all" data-target="materi-section">
+                            <i class="fas fa-book-open mr-1.5 text-blue-500"></i>1. Materi & Contoh
+                        </button>
+                        <button class="submenu-tab flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-500 hover:text-slate-700 transition-all" data-target="latihan-section">
+                            <i class="fas fa-pen-to-square mr-1.5 text-amber-500"></i>2. Latihan Soal
+                        </button>
+                        <button class="submenu-tab flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold text-slate-500 hover:text-slate-700 transition-all" data-target="kunci-section">
+                            <i class="fas fa-key mr-1.5 text-emerald-500"></i>3. Kunci Jawaban
+                        </button>
+                    </div>
+
+                    <!-- Tab 1: Materi -->
+                    <div id="materi-section" class="tab-content active leading-relaxed">
+                        <div id="materi-body" class="prose max-w-none text-slate-700">
+                            <!-- Materi content loaded via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Latihan Soal -->
+                    <div id="latihan-section" class="tab-content">
+                        <!-- Menu Pilihan Sesi Soal -->
+                        <div id="latihan-menu" class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+                            <button onclick="startQuiz('dasar')" class="group p-6 bg-emerald-50/50 border-2 border-emerald-200 hover:border-emerald-500 rounded-2xl text-left transition-all duration-200 hover:shadow-md">
+                                <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-seedling text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-800 mb-1">Menu 1: Latihan Soal Dasar</h3>
+                                <p class="text-slate-600 text-xs md:text-sm">10 Soal Pilihan Ganda Dasar untuk menguji dan mengokohkan pemahaman konsep inti.</p>
+                            </button>
+
+                            <button onclick="startQuiz('tka')" class="group p-6 bg-indigo-50/50 border-2 border-indigo-200 hover:border-indigo-500 rounded-2xl text-left transition-all duration-200 hover:shadow-md">
+                                <div class="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-brain text-xl"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-800 mb-1">Menu 2: Latihan Menengah & TKA</h3>
+                                <p class="text-slate-600 text-xs md:text-sm">5 Soal Menengah + 5 Soal TKA (Literasi & Numerasi, PG Biasa & PG Kompleks).</p>
+                            </button>
+                        </div>
+
+                        <!-- Quiz Container -->
+                        <div id="quiz-container" class="hidden flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-100">
+                                    <span id="quiz-title-badge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-md">Quiz</span>
+                                    <button onclick="exitQuiz()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-1.5 px-3 rounded-lg transition-colors">
+                                        <i class="fas fa-xmark mr-1"></i>Keluar Sesi
+                                    </button>
+                                </div>
+                                
+                                <div id="question-area" class="min-h-[250px]">
+                                    <!-- Question loaded here -->
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center pt-6 border-t border-slate-100 mt-6">
+                                <button id="btn-prev" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-xl text-sm disabled:opacity-40 transition">
+                                    <i class="fas fa-chevron-left mr-1"></i>Sebelumnya
+                                </button>
+                                <span id="question-counter" class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">1 / 10</span>
+                                <button id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-xl text-sm transition">
+                                    Berikutnya<i class="fas fa-chevron-right ml-1"></i>
+                                </button>
+                                <button id="btn-submit" onclick="confirmSubmitQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-5 rounded-xl text-sm transition hidden">
+                                    <i class="fas fa-check-double mr-1"></i>Selesai & Cek Nilai
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="quiz-result" class="hidden bg-white p-4 md:p-6 rounded-2xl border border-slate-200">
+                            <div class="text-center pb-6 border-b border-slate-100 mb-6">
+                                <h3 class="text-xl font-bold text-slate-800 mb-1">Hasil & Evaluasi Latihan</h3>
+                                <p class="text-xs text-slate-500 mb-4">Nilai dikalkulasi berdasarkan proporsi jawaban benar (Maksimal 100)</p>
+                                
+                                <div class="inline-flex items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner">
+                                    <div class="text-center">
+                                        <span id="score-text" class="text-5xl font-black text-blue-600">0</span>
+                                        <span class="text-slate-400 font-medium text-lg">/ 100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Analysis Report -->
+                            <div class="mb-6">
+                                <h4 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
+                                    <i class="fas fa-chart-pie text-blue-600"></i>Laporan Diagnostik Penguasaan Topik
+                                </h4>
+                                <ul id="topic-analysis" class="space-y-2">
+                                    <!-- Topic breakdown inserted here -->
+                                </ul>
+                            </div>
+
+                            <!-- Answer Review -->
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm mb-3 flex items-center gap-2">
+                                    <i class="fas fa-list-check text-emerald-600"></i>Review Lembar Jawaban
+                                </h4>
+                                <div id="answer-review" class="space-y-3 max-h-96 overflow-y-auto pr-1">
+                                    <!-- Detailed answer review -->
+                                </div>
+                            </div>
+
+                            <div class="mt-8 text-center border-t border-slate-100 pt-6">
+                                <button onclick="exitQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-xl text-sm transition">
+                                    Kembali ke Menu Latihan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Kunci Jawaban -->
+                    <div id="kunci-section" class="tab-content">
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl mb-6">
+                            <p class="text-xs md:text-sm text-amber-800 flex items-center gap-2 font-medium">
+                                <i class="fas fa-triangle-exclamation text-amber-600 text-base"></i>
+                                Rekomendasi: Gunakan kunci jawaban ini untuk evaluasi mandiri setelah menyelesaikan latihan soal di Menu Latihan.
+                            </p>
+                        </div>
+                        <div id="kunci-body" class="space-y-6">
+                            <!-- Answer keys loaded via JS -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Modal Confirm Dialog -->
+    <div id="confirm-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl text-center">
+            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-circle-question text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Konfirmasi Pengumpulan</h3>
+            <p class="text-slate-600 text-xs md:text-sm mb-6">Apakah Anda yakin ingin menyelesaikan latihan dan melihat analisis nilai?</p>
+            <div class="flex gap-3">
+                <button onclick="closeConfirmModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition">Batal</button>
+                <button onclick="executeSubmitQuiz()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl transition">Ya, Selesai</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database lengkap untuk Pertemuan 1 - 6
+        const meetingsData = [
+            {
+                id: 1,
+                badge: "Pertemuan 1",
+                title: "Struktur Atom & Sifat Keperiodikan Unsur",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Partikel Penyusun Atom & Notasi Unsur</h3>
+                    <p class="mb-3">Atom terdiri dari inti atom (proton bermuatan positif dan neutron netral) serta kulit atom yang dihuni oleh elektron bermuatan negatif.</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Notasi Unsur Netral:</p>
+                        <p class="text-center font-serif text-lg">\\( _{Z}^{A}\\text{X} \\)</p>
+                        <ul class="text-xs space-y-1 mt-2 text-slate-700">
+                            <li>• <strong>A</strong> = Nomor Massa = Jumlah Proton + Jumlah Neutron</li>
+                            <li>• <strong>Z</strong> = Nomor Atom = Jumlah Proton = Jumlah Elektron (pada atom netral)</li>
+                            <li>• Jumlah Neutron = \\( A - Z \\)</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">2. Konfigurasi Elektron & Bilangan Kuantum</h3>
+                    <p class="mb-2">Penulisan konfigurasi elektron berdasarkan asas Aufbau (tingkat energi terkecil ke terbesar): 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p, 6s...</p>
+                    <p class="mb-3">Setiap elektron dicirikan oleh 4 bilangan kuantum:</p>
+                    <ul class="list-disc pl-5 mb-4 text-xs space-y-1">
+                        <li><strong>Utama (n):</strong> Menunjukkan kulit atom (n = 1, 2, 3, ...).</li>
+                        <li><strong>Azimut (l):</strong> Menunjukkan subkulit (s=0, p=1, d=2, f=3).</li>
+                        <li><strong>Magnetik (m):</strong> Menunjukkan orbital (-l hingga +l).</li>
+                        <li><strong>Spin (s):</strong> Menunjukkan arah putar elektron (+1/2 atau -1/2).</li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">3. Sifat Keperiodikan Unsur</h3>
+                    <p class="mb-3">Sifat-sifat yang berubah secara berkala seiring kenaikan nomor atom dalam tabel periodik:</p>
+                    <div class="overflow-x-auto my-3">
+                        <table class="w-full text-xs text-left border border-slate-200 rounded-lg">
+                            <thead class="bg-slate-100 text-slate-700">
+                                <tr>
+                                    <th class="p-2 border">Sifat Keperiodikan</th>
+                                    <th class="p-2 border">Dalam Satu Golongan (Atas ke Bawah)</th>
+                                    <th class="p-2 border">Dalam Satu Periode (Kiri ke Kanan)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 border font-semibold">Jari-Jari Atom</td>
+                                    <td class="p-2 border text-emerald-600 font-bold">Makin Besar</td>
+                                    <td class="p-2 border text-rose-600 font-bold">Makin Kecil</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border font-semibold">Energi Ionisasi</td>
+                                    <td class="p-2 border text-rose-600 font-bold">Makin Kecil</td>
+                                    <td class="p-2 border text-emerald-600 font-bold">Makin Besar</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border font-semibold">Keelektronegatifan</td>
+                                    <td class="p-2 border text-rose-600 font-bold">Makin Kecil</td>
+                                    <td class="p-2 border text-emerald-600 font-bold">Makin Besar</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border font-semibold">Afinitas Elektron</td>
+                                    <td class="p-2 border text-rose-600 font-bold">Makin Kecil</td>
+                                    <td class="p-2 border text-emerald-600 font-bold">Makin Besar</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example-box">
+                        <p class="font-bold text-emerald-800 text-xs uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>Contoh Soal & Pembahasan:</p>
+                        <p class="text-xs font-semibold">Tentukan keempat bilangan kuantum elektron terakhir dari unsur <sub>16</sub>S!</p>
+                        <p class="text-xs text-slate-600 mt-2"><strong>Pembahasan:</strong><br>
+                        Konfigurasi <sub>16</sub>S = 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>4</sup>.<br>
+                        Elektron terakhir berada pada subkulit 3p<sup>4</sup>.<br>
+                        • n = 3 (kulit ke-3)<br>
+                        • l = 1 (subkulit p)<br>
+                        • m = -1 (elektron ke-4 di subkulit p menempati kotak pertama m = -1)<br>
+                        • s = -1/2 (panah menghadap ke bawah)<br>
+                        Jadi, keempat bilangan kuantumnya adalah: n=3, l=1, m=-1, s=-1/2.
+                        </p>
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "1_d1", type: "pg", topic: "Struktur Atom", q: "Suatu atom X memiliki nomor atom 26 dan nomor massa 56. Jumlah elektron, proton, dan neutron secara berturut-turut pada atom netral tersebut adalah...", options: ["26, 26, 30", "26, 30, 26", "30, 26, 26", "26, 26, 56", "56, 26, 30"], ans: 0 },
+                        { id: "1_d2", type: "pg", topic: "Konfigurasi Elektron", q: "Konfigurasi elektron dari unsur Kromium (<sub>24</sub>Cr) yang tepat adalah...", options: ["[Ar] 4s² 3d⁴", "[Ar] 4s¹ 3d⁵", "[Ar] 4s² 3d⁵", "[Ar] 3d⁶", "[Ne] 3s² 3p⁶ 4s² 3d⁴"], ans: 1 },
+                        { id: "1_d3", type: "pg", topic: "Bilangan Kuantum", q: "Harga keempat bilangan kuantum elektron terakhir dari unsur <sub>16</sub>S adalah...", options: ["n=3, l=1, m=-1, s=-1/2", "n=3, l=1, m=+1, s=+1/2", "n=3, l=2, m=-1, s=-1/2", "n=2, l=1, m=-1, s=-1/2", "n=3, l=1, m=0, s=-1/2"], ans: 0 },
+                        { id: "1_d4", type: "pg", topic: "Sifat Keperiodikan", q: "Unsur yang memiliki jari-jari atom terbesar di antara unsur berikut adalah...", options: ["<sub>11</sub>Na", "<sub>12</sub>Mg", "<sub>19</sub>K", "<sub>20</sub>Ca", "<sub>17</sub>Cl"], ans: 2 },
+                        { id: "1_d5", type: "pg", topic: "Sifat Keperiodikan", q: "Unsur gas mulia memiliki energi ionisasi pertama paling tinggi karena...", options: ["Jari-jari atomnya sangat besar", "Jumlah protonnya sangat sedikit", "Konfigurasi elektronnya sangat stabil (oktet/duplet)", "Afinitas elektronnya bertanda positif", "Mempunyai daya tarik inti paling lemah"], ans: 2 },
+                        { id: "1_d6", type: "pg", topic: "Isotop & Isobar", q: "Spesi <sub>6</sub>C<sup>12</sup> dan <sub>6</sub>C<sup>14</sup> dinamakan isotop karena...", options: ["Memiliki nomor massa yang sama", "Memiliki jumlah proton sama tetapi nomor massa berbeda", "Memiliki jumlah neutron yang sama", "Memiliki konfigurasi elektron berbeda", "Memiliki sifat fisika yang sama persis"], ans: 1 },
+                        { id: "1_d7", type: "pg", topic: "Konfigurasi Ion", q: "Ion Fe<sup>3+</sup> (nomor atom Fe = 26) memiliki konfigurasi elektron...", options: ["[Ar] 4s² 3d³", "[Ar] 3d⁵", "[Ar] 4s¹ 3d⁴", "[Ar] 4s² 3d⁶", "[Ar] 3d⁶"], ans: 1 },
+                        { id: "1_d8", type: "pg", topic: "Sifat Keperiodikan", q: "Dalam satu periode dari kiri ke kanan, keelektronegatifan unsur cenderung bertambah karena...", options: ["Muatan inti bertambah dan jari-jari makin kecil", "Jumlah kulit atom makin bertambah", "Daya tarik inti terhadap elektron makin lemah", "Nomor massa makin kecil", "Sifat logam makin kuat"], ans: 0 },
+                        { id: "1_d9", type: "pg", topic: "Bilangan Kuantum", q: "Nilai bilangan kuantum yang TIDAK mungkin untuk suatu elektron adalah...", options: ["n=2, l=1, m=0, s=+1/2", "n=3, l=2, m=-2, s=-1/2", "n=2, l=2, m=0, s=+1/2", "n=1, l=0, m=0, s=-1/2", "n=4, l=3, m=-1, s=+1/2"], ans: 2 },
+                        { id: "1_d10", type: "pg", topic: "Struktur Atom", q: "Partikel penyusun inti atom yang tidak bermuatan listrik dinamakan...", options: ["Proton", "Elektron", "Neutron", "Positron", "Foton"], ans: 2 }
+                    ],
+                    tka: [
+                        { id: "1_t1", type: "pg", topic: "Sifat Keperiodikan", q: "Data energi ionisasi pertama (kJ/mol) untuk unsur-unsur periode 3 secara acak: 738, 578, 496, 786, 1012, 1000, 1251, 1521. Urutan unsur dari yang paling elektropositif ke yang paling elektronegatif adalah...", options: ["Na - Mg - Al - Si - P - S - Cl - Ar", "Ar - Cl - S - P - Si - Al - Mg - Na", "Na - Al - Mg - Si - S - P - Cl - Ar", "Cl - S - P - Si - Al - Mg - Na - Ar", "Mg - Na - Al - Si - P - S - Cl - Ar"], ans: 0 },
+                        { id: "1_t2", type: "pg", topic: "Analisis Konfigurasi", q: "Unsur X berikatan dengan unsur Y membentuk senyawa X Y₂. Jika X (Z=12) dan Y (Z=17), maka ikatan yang terbentuk bersifat...", options: ["Kovalen polar", "Kovalen nonpolar", "Ionik", "Logam", "Hidrogen"], ans: 2 },
+                        { id: "1_t3", type: "pg", topic: "Isotop & Numerasi", q: "Galium terdiri dari dua isotop di alam, yaitu Ga-69 (massa = 68,9 amu, kelimpahan 60%) dan Ga-71 (massa = 70,9 amu, kelimpahan 40%). Massa atom relatif (Ar) Galium adalah...", options: ["69,0", "69,7", "70,0", "70,2", "70,5"], ans: 1 },
+                        { id: "1_t4", type: "pg", topic: "Konfigurasi Ion", q: "Spesi berikut yang bersifat isoelektronik dengan gas mulia Kripton (<sub>36</sub>Kr) adalah...", options: ["Rb⁺ (Z=37)", "Sr²⁺ (Z=38)", "Br⁻ (Z=35)", "Se²⁻ (Z=34)", "Semua spesi di atas benar"], ans: 4 },
+                        { id: "1_t5", type: "pg", topic: "Bilangan Kuantum", q: "Berapa jumlah maksimum elektron yang dapat berada pada orbital dengan n=3 dan l=2?", options: ["2", "6", "10", "14", "18"], ans: 2 },
+                        { id: "1_tka1", type: "pg", topic: "Literasi - Teori Atom", q: "<strong>Wacana Literasi:</strong> Model atom terus berkembang dari model bola pejal Dalton, kismis Thomson, hingga model tata surya Bohr dan mekanika kuantum. Bohr menyatakan elektron beredar pada lintasan melingkar tertentu tanpa memancarkan energi. Namun, teori ini menemui keterbatasan saat menjelaskan spektrum atom berelektron banyak dan sifat gelombang elektron.<br><br>Berdasarkan wacana, perbedaan mendasar antara teori Bohr dan Mekanika Kuantum terletak pada...", options: ["Keberadaan inti atom", "Pengenalan tingkat energi (kulit)", "Pernyataan bahwa kedudukan elektron ditentukan dalam bentuk kebolehjadian (orbital)", "Pernyataan bahwa elektron bermuatan negatif", "Adanya proton dan neutron dalam inti"], ans: 2 },
+                        { id: "1_tka2", type: "pg_kompleks", topic: "Numerasi - Spektrometri Massa", q: "Hasil analisis spektrometer massa sampel unsur Klorin menunjukkan dua puncak m/z 35 (kelimpahan 75%) dan m/z 37 (kelimpahan 25%). Manakah pernyataan berikut yang <strong>BENAR</strong>? (Pilih lebih dari satu)", options: ["Massa atom relatif (Ar) Klorin adalah 35,5", "Jumlah neutron pada Cl-37 adalah 20 (nomor atom Cl = 17)", "Jumlah proton Cl-35 dan Cl-37 berbeda", "Atom Cl-35 tiga kali lebih melimpah dibandingkan Cl-37"], ans: [0, 1, 3] },
+                        { id: "1_tka3", type: "pg", topic: "Literasi Numerasi - Sifat Fisik", q: "Disajikan data jari-jari atom (pm): Li (152), Na (186), K (227), Rb (248). Titik leleh (°C): Li (181), Na (98), K (63), Rb (39). Kesimpulan yang paling tepat mengenai hubungan kedua data tersebut adalah...", options: ["Semakin besar jari-jari atom, ikatan logam makin kuat sehingga titik leleh naik", "Makin besar jari-jari atom, ikatan logam makin lemah sehingga titik leleh makin rendah", "Jari-jari atom tidak berpengaruh terhadap titik leleh", "Logam alkali dengan nomor atom terbesar memiliki titik leleh tertinggi", "Titik leleh berbanding lurus dengan energi ionisasi"], ans: 1 },
+                        { id: "1_tka4", type: "pg_kompleks", topic: "Sifat Paramagnetik", q: "Sifat paramagnetik suatu atom disebabkan oleh keberadaan elektron yang tidak berpasangan pada subkulitnya. Pilihlah pernyataan yang <strong>BENAR</strong>! (Pilih lebih dari satu)", options: ["Atom <sub>26</sub>Fe ([Ar] 4s² 3d⁶) bersifat paramagnetik", "Atom <sub>30</sub>Zn ([Ar] 4s² 3d¹⁰) bersifat diamagnetik", "Makin banyak elektron tidak berpasangan, sifat paramagnetik makin kuat", "Atom gas mulia bersifat sangat paramagnetik"], ans: [0, 1, 2] },
+                        { id: "1_tka5", type: "pg", topic: "Literasi Material", q: "Silikon (<sub>14</sub>Si) dan Germanium (<sub>32</sub>Ge) merupakan unsur semikonduktor utama. Kesamaan sifat kimia keduanya ditinjau dari posisi dalam tabel periodik adalah...", options: ["Sama-sama berada dalam Golongan IVA dengan 4 elektron valensi", "Sama-sama berada pada Periode yang sama", "Memiliki jari-jari atom yang persis sama", "Memiliki titik leleh yang lebih rendah dari gas mulia", "Keduanya merupakan logam alkali terkuat"], ans: 0 }
+                    ]
+                }
+            },
+            // Pertemuan 2
+            {
+                id: 2,
+                badge: "Pertemuan 2",
+                title: "Hukum Dasar Kimia, Stoikiometri, Ikatan Kimia & Termokimia",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Hukum-Hukum Dasar & Konsep Mol</h3>
+                    <ul class="list-disc pl-5 mb-3 text-xs space-y-1">
+                        <li><strong>Hukum Lavoisier:</strong> Massa total zat sebelum dan sesudah reaksi adalah sama.</li>
+                        <li><strong>Hukum Proust:</strong> Perbandingan massa unsur-unsur pembentuk senyawa selalu tetap.</li>
+                        <li><strong>Hukum Dalton:</strong> Perbandingan massa unsur kedua pada senyawa berberbeda merupakan bilangan bulat sederhana.</li>
+                        <li><strong>Hukum Gay-Lussac & Avogadro:</strong> Perbandingan volume gas = perbandingan koefisien reaksi.</li>
+                    </ul>
+
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Rumus Penting Stoikiometri:</p>
+                        <ul class="text-xs space-y-1.5 text-slate-700">
+                            <li>• Mol dari massa: \\( n = \\frac{\\text{massa (gram)}}{M_r} \\)</li>
+                            <li>• Mol dari volume gas STP (0°C, 1 atm): \\( n = \\frac{V}{22,4 \\text{ L}} \\)</li>
+                            <li>• Persamaan Gas Ideal: \\( P \\cdot V = n \\cdot R \\cdot T \\)</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">2. Ikatan Kimia & Gaya Antarmolekul</h3>
+                    <p class="mb-3">
+                        • <strong>Ikatan Ion:</strong> Serah terima elektron (Logam + Nonlogam).<br>
+                        • <strong>Ikatan Kovalen:</strong> Pemakaian bersama pasangan elektron (Nonlogam + Nonlogam).<br>
+                        • <strong>Ikatan Hidrogen:</strong> Gaya tarik antara atom H dengan atom sangat elektronegatif (F, O, N).
+                    </p>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">3. Termokimia & Perubahan Entalpi (\\(\\Delta H\\))</h3>
+                    <p class="mb-2">Reaksi Eksoterm (melepas kalor, \\(\\Delta H < 0\\)) vs Endoterm (menyerap kalor, \\(\\Delta H > 0\\)).</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Perhitungan Entalpi:</p>
+                        <p class="text-xs">1. Kalorimetri: \\( Q = m \\cdot c \\cdot \\Delta T \\quad \\rightarrow \\quad \\Delta H = -\\frac{Q}{n} \\)</p>
+                        <p class="text-xs mt-1">2. Hukum Hess: \\( \\Delta H_{\\text{total}} = \\sum \\Delta H_{\\text{tahap}} \\)</p>
+                        <p class="text-xs mt-1">3. Energi Ikatan: \\( \\Delta H = \\sum E_{\\text{pemutusan ikatan (reaktan)}} - \\sum E_{\\text{pembentukan ikatan (produk)}} \\)</p>
+                    </div>
+
+                    <div class="example-box">
+                        <p class="font-bold text-emerald-800 text-xs uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>Contoh Soal Pembakaran Metana:</p>
+                        <p class="text-xs">Diketahui energi ikatan rata-rata: C-H = 413 kJ/mol, O=O = 495 kJ/mol, C=O = 799 kJ/mol, O-H = 463 kJ/mol. Tentukan \\(\\Delta H\\) pembakaran 1 mol CH₄!</p>
+                        <p class="text-xs text-slate-600 mt-2"><strong>Pembahasan:</strong><br>
+                        Reaksi: CH₄ + 2O₂ → CO₂ + 2H₂O<br>
+                        Ikatan yang putus: 4 (C-H) + 2 (O=O) = 4(413) + 2(495) = 1652 + 990 = 2642 kJ.<br>
+                        Ikatan yang terbentuk: 2 (C=O) + 4 (O-H) = 2(799) + 4(463) = 1598 + 1852 = 3450 kJ.<br>
+                        \\(\\Delta H = 2642 - 3450 = -808 \\text{ kJ/mol}\\).
+                        </p>
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "2_d1", type: "pg", topic: "Stoikiometri", q: "Massa molar dari senyawa Kalsium Karbonat (CaCO₃) adalah... (Ar Ca=40, C=12, O=16)", options: ["100 g/mol", "80 g/mol", "60 g/mol", "120 g/mol", "50 g/mol"], ans: 0 },
+                        { id: "2_d2", type: "pg", topic: "Konsep Mol", q: "Volume dari 0,5 mol gas Nitrogen (N₂) pada keadaan standar (STP) adalah...", options: ["11,2 Liter", "22,4 Liter", "5,6 Liter", "44,8 Liter", "2,24 Liter"], ans: 0 },
+                        { id: "2_d3", type: "pg", topic: "Hukum Dasar", q: "Hukum Kekekalan Massa yang menyatakan bahwa massa total zat sebelum dan sesudah reaksi kimia adalah sama dikemukakan oleh...", options: ["Lavoisier", "Proust", "Dalton", "Avogadro", "Gay-Lussac"], ans: 0 },
+                        { id: "2_d4", type: "pg", topic: "Ikatan Kimia", q: "Jenis ikatan yang terdapat pada senyawa NaCl adalah...", options: ["Ikatan Ionik", "Ikatan Kovalen Tunggal", "Ikatan Logam", "Ikatan Hidrogen", "Ikatan Kovalen Koordinasi"], ans: 0 },
+                        { id: "2_d5", type: "pg", topic: "Ikatan Kovalen", q: "Senyawa berikut yang memiliki ikatan kovalen nonpolar adalah...", options: ["H₂", "H₂O", "NH₃", "HCl", "HF"], ans: 0 },
+                        { id: "2_d6", type: "pg", topic: "Termokimia", q: "Ciri khas utama dari reaksi eksoterm adalah...", options: ["Sistem melepas kalor ke lingkungan (ΔH bernilai negatif)", "Sistem menyerap kalor dari lingkungan", "Suhu lingkungan mengalami penurunan", "Entalpi produk lebih besar dari entalpi reaktan", "ΔH bernilai positif"], ans: 0 },
+                        { id: "2_d7", type: "pg", topic: "Gaya Antarmolekul", q: "Tingginya titik didih air (H₂O) dibandingkan H₂S terutama disebabkan oleh adanya...", options: ["Ikatan Hidrogen antarmolekul H₂O", "Gaya dipol sesaat", "Massa molekul relatif H₂O yang besar", "Ikatan kovalen nonpolar", "Gaya London"], ans: 0 },
+                        { id: "2_d8", type: "pg", topic: "Bentuk Molekul", q: "Bentuk molekul dari Methane (CH₄) menurut teori VSEPR adalah...", options: ["Tetrahedral", "Linier", "Trigonal Planar", "Oktahedral", "Bipiramida Trigonal"], ans: 0 },
+                        { id: "2_d9", type: "pg", topic: "Termokimia", q: "Perubahan entalpi pembentukan standar dilambangkan dengan simbol...", options: ["ΔH°f", "ΔH°d", "ΔH°c", "ΔH°n", "ΔH°s"], ans: 0 },
+                        { id: "2_d10", type: "pg", topic: "Stoikiometri Reaksi", q: "Pada reaksi: N₂ + 3H₂ → 2NH₃, jika 3 mol gas H₂ direaksikan sempurna, jumlah mol NH₃ yang dihasilkan adalah...", options: ["2 mol", "1 mol", "3 mol", "6 mol", "0.5 mol"], ans: 0 }
+                    ],
+                    tka: [
+                        { id: "2_t1", type: "pg", topic: "Pereaksi Pembatas", q: "Sebanyak 5,4 gram aluminium (Ar Al = 27) direaksikan dengan 16 gram oksigen (Ar O = 16) membentuk Al₂O₃. Massa Al₂O₃ (Mr = 102) yang terbentuk adalah...", options: ["10,2 gram", "20,4 gram", "5,1 gram", "15,3 gram", "25,5 gram"], ans: 0 },
+                        { id: "2_t2", type: "pg", topic: "Hukum Hess", q: "Diketahui:<br>C + O₂ → CO₂ (ΔH = -394 kJ)<br>2CO + O₂ → 2CO₂ (ΔH = -566 kJ)<br>Nilai ΔH untuk reaksi C + ½O₂ → CO adalah...", options: ["-111 kJ", "-283 kJ", "+172 kJ", "-677 kJ", "+111 kJ"], ans: 0 },
+                        { id: "2_t3", type: "pg", topic: "Kalorimetri", q: "Pembakaran 1 gram etanol (C₂H₅OH, Mr = 46) dalam kalorimeter meningkatkan suhu 100 gram air sebesar 10°C. Jika kalor jenis air 4,2 J/g°C, entalpi pembakaran molar etanol adalah...", options: ["-193,2 kJ/mol", "-4,2 kJ/mol", "-19,32 kJ/mol", "-420 kJ/mol", "-840 kJ/mol"], ans: 0 },
+                        { id: "2_t4", type: "pg", topic: "Rumus Empiris & Molekul", q: "Senyawa organik terdiri dari 40% Karbon, 6,7% Hidrogen, dan sisanya Oksigen. Jika Mr = 60, rumus molekul senyawa tersebut adalah...", options: ["C₂H₄O₂", "CH₂O", "C₃H₆O₃", "C₄H₈O₄", "C₂H₆O"], ans: 0 },
+                        { id: "2_t5", type: "pg", topic: "Bentuk Molekul & Kepolaran", q: "Senyawa SF₆ bersifat nonpolar meskipun ikatan S-F polar. Hal ini terjadi karena...", options: ["Bentuk molekul simetris Oktahedral sehingga momen dipol total = 0", "SF₆ memiliki pasangan elektron bebas", "Bentuk molekul V-shape", "Benda bersifat sangat polar", "Adanya ikatan hidrogen"], ans: 0 },
+                        { id: "2_tka1", type: "pg", topic: "Literasi - Efisiensi Bahan Bakar", q: "<strong>Wacana Literasi:</strong> Nilai kalor bahan bakar menentukan berapa energi yang dibebaskan per gram zat. LPG terdiri dari campuran propana (C₃H₈, ΔHc = -2220 kJ/mol, Mr=44) dan butana (C₄H₁₀, ΔHc = -2878 kJ/mol, Mr=58).<br><br>Berdasarkan data, nilai kalor per gram yang dibebaskan saat pembakaran sempurna butana murni adalah...", options: ["49,6 kJ/gram", "50,5 kJ/gram", "62,0 kJ/gram", "28,7 kJ/gram", "100 kJ/gram"], ans: 0 },
+                        { id: "2_tka2", type: "pg_kompleks", topic: "Numerasi - Stoikiometri Gas", q: "Pada suhu dan tekanan tertentu, 10 mL gas hidrokarbon CₓHᵧ membakar sempurna dalam 50 mL gas O₂ menghasilkan 30 mL gas CO₂. Pilihlah pernyataan yang <strong>BENAR</strong>! (Pilih lebih dari satu)", options: ["Rumus molekul hidrokarbon tersebut adalah C₃H₈", "Volume uap air (H₂O) yang dihasilkan adalah 40 mL", "Koefisien O₂ dalam reaksi setara adalah 5", "Gas hidrokarbon tersebut adalah Etana (C₂H₆)"], ans: [0, 1, 2] },
+                        { id: "2_tka3", type: "pg", topic: "Literasi - Bencana Gas Berbahaya", q: "Gas Karbon Monoksida (CO) berbahaya karena mengikat hemoglobin lebih kuat dari O₂. Reaksi pembakaran tak sempurna bensin (C₈H₁₈) menghasilkan CO dan H₂O. Perbandingan koefisien reaksi setara pembakaran tak sempurna C₈H₁₈ + O₂ → CO + H₂O adalah...", options: ["2 C₈H₁₈ + 17 O₂ → 16 CO + 18 H₂O", "C₈H₁₈ + 25 O₂ → 8 CO + 9 H₂O", "C₈H₁₈ + 12 O₂ → 8 CO + 9 H₂O", "2 C₈H₁₈ + 25 O₂ → 16 CO₂ + 18 H₂O", "C∯H₁₈ + O₂ → CO + H₂O"], ans: 0 },
+                        { id: "2_tka4", type: "pg_kompleks", topic: "Gaya Antarmolekul", q: "Manakah di antara senyawa berikut yang memiliki ikatan hidrogen antarmolekulnya? (Pilih lebih dari satu)", options: ["H₂O (Air)", "NH₃ (Amonia)", "HF (Asam Fluorida)", "CH₄ (Metana)"], ans: [0, 1, 2] },
+                        { id: "2_tka5", type: "pg", topic: "Literasi - Energi Kimia", q: "Kantong kompres dingin instan bekerja berdasarkan pelarutan Ammonium Nitrat (NH₄NO₃) dalam air yang menyerap kalor dari sekitar (reaksi endoterm). Pernyataan yang sesuai dengan prinsip kerja ini adalah...", options: ["Entalpi sistem bertambah (ΔH > 0) dan suhu lingkungan turun", "Entalpi sistem berkurang (ΔH < 0) dan suhu lingkungan naik", "Reaksi melepas energi panas ke lingkungan", "Sistem mengalami reaksi eksoterm", "Tidak ada perubahan entalpi"], ans: 0 }
+                    ]
+                }
+            },
+            // Pertemuan 3
+            {
+                id: 3,
+                badge: "Pertemuan 3",
+                title: "Laju Reaksi, Larutan Elektrolit & Kesetimbangan Kimia",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Laju Reaksi & Teori Tumbukan</h3>
+                    <p class="mb-2">Laju reaksi adalah berkurangnya konsentrasi reaktan atau bertambahnya konsentrasi produk per satuan waktu.</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Persamaan Laju & Pengaruh Suhu:</p>
+                        <p class="text-xs">Persamaan Laju: \\( v = k [A]^x [B]^y \\) (x = orde terhadap A, y = orde terhadap B)</p>
+                        <p class="text-xs mt-1">Pengaruh Kenaikan Suhu: \\( v_2 = v_1 \\cdot (n)^{\\frac{T_2 - T_1}{\\Delta T}} \\)</p>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">2. Larutan Elektrolit & Derajat Ionisasi</h3>
+                    <p class="mb-3">
+                        • <strong>Elektrolit Kuat:</strong> Terionisasi sempurna (\\( \\alpha = 1 \\)), menghantarkan listrik dengan baik (lampu terang, banyak gelembung).<br>
+                        • <strong>Elektrolit Lemah:</strong> Terionisasi sebagian (\\( 0 < \\alpha < 1 \\)).<br>
+                        • <strong>Nonelektrolit:</strong> Tidak terionisasi (\\( \\alpha = 0 \\)).
+                    </p>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">3. Kesetimbangan Kimia & Asas Le Chatelier</h3>
+                    <p class="mb-2">Kesetimbangan dinamis terjadi saat laju reaksi maju sama dengan laju reaksi balik.</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Tetapan Kesetimbangan (Kc dan Kp):</p>
+                        <p class="text-xs">Untuk reaksi: \\( aA + bB \\rightleftharpoons cC + dD \\)</p>
+                        <p class="text-xs mt-1">\\( K_c = \\frac{[C]^c [D]^d}{[A]^a [B]^b} \\) (Hanya fasa gas [g] dan larutan [aq])</p>
+                        <p class="text-xs mt-1">Hubungan Kc & Kp: \\( K_p = K_c (R \\cdot T)^{\\Delta n} \\) dengan \\( \\Delta n = (c+d) - (a+b) \\)</p>
+                    </div>
+
+                    <p class="text-xs font-bold text-slate-700 mt-2">Pergeseran Kesetimbangan (Asas Le Chatelier):</p>
+                    <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+                        <li><strong>Konsentrasi:</strong> Ditambah → bergeser menjauhi arah zat tersebut.</li>
+                        <li><strong>Tekanan diperbesar (Volume diperkecil):</strong> Bergeser ke arah koefisien gas terkecil.</li>
+                        <li><strong>Suhu dinaikkan:</strong> Bergeser ke arah reaksi Endoterm ( menyerap kalor ).</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <p class="font-bold text-emerald-800 text-xs uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>Contoh Soal Orde Reaksi:</p>
+                        <p class="text-xs">Jika konsentrasi A dinaikkan 2 kali, laju reaksi menjadi 4 kali lebih cepat. Berapa orde reaksi terhadap A?</p>
+                        <p class="text-xs text-slate-600 mt-2"><strong>Pembahasan:</strong><br>
+                        Hubungan: \\( (2)^x = 4 \\quad \\rightarrow \\quad x = 2 \\). Orde reaksi terhadap A adalah 2.
+                        </p>
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "3_d1", type: "pg", topic: "Faktor Laju Reaksi", q: "Faktor berikut yang dapat meningkatkan laju reaksi dengan cara menurunkan energi aktivasi adalah...", options: ["Katalis", "Suhu", "Konsentrasi", "Luas permukaan", "Tekanan"], ans: 0 },
+                        { id: "3_d2", type: "pg", topic: "Orde Reaksi", q: "Jika konsentrasi reaktan dinaikkan 3 kali lipat dan laju reaksi bertambah menjadi 9 kali lipat, orde reaksinya adalah...", options: ["2", "1", "0", "3", "1/2"], ans: 0 },
+                        { id: "3_d3", type: "pg", topic: "Larutan Elektrolit", q: "Larutan berikut yang tergolong elektrolit kuat adalah...", options: ["HCl 1M", "CH₃COOH 1M", "Sugar (Glukosa)", "NH₄OH 1M", "Urea"], ans: 0 },
+                        { id: "3_d4", type: "pg", topic: "Kesetimbangan Kimia", q: "Syarat terjadinya kesetimbangan kimia dinamis adalah...", options: ["Reaksi bolak-balik dalam sistem tertutup dengan laju reaksi maju = laju reaksi balik", "Reaksi berlangsung dalam sistem terbuka", "Konsentrasi reaktan dan produk harus sama persis", "Reaksi telah berhenti secara total", "Massa reaktan habis bereaksi"], ans: 0 },
+                        { id: "3_d5", type: "pg", topic: "Tetapan Kc", q: "Ungkapan Kc untuk reaksi: CaCO₃(s) ⇌ CaO(s) + CO₂(g) adalah...", options: ["Kc = [CO₂]", "Kc = [CaO][CO₂] / [CaCO₃]", "Kc = [CaO] / [CaCO₃]", "Kc = 1 / [CO₂]", "Kc = [CaCO₃] / [CO₂]"], ans: 0 },
+                        { id: "3_d6", type: "pg", topic: "Asas Le Chatelier", q: "Pada reaksi eksoterm N₂ + 3H₂ ⇌ 2NH₃, agar produk NH₃ yang dihasilkan bertambah banyak, perlakuan yang tepat adalah...", options: ["Menurunkan suhu sistem", "Menaikkan suhu sistem", "Memperbesar volume wadah", "Menurunkan tekanan", "Mengurangi konsentrasi N₂"], ans: 0 },
+                        { id: "3_d7", type: "pg", topic: "Larutan Elektrolit", q: "Pengujian daya hantar listrik larutan urea (CO(NH₂)₂) menunjukkan hasil...", options: ["Lampu tidak menyala dan tidak ada gelembung gas", "Lampu menyala terang dan banyak gelembung", "Lampu redup dan ada gelembung", "Lampu menyala terang tanpa gelembung", "Lampu berkedip-kedip"], ans: 0 },
+                        { id: "3_d8", type: "pg", topic: "Pengaruh Suhu Laju", q: "Setiap kenaikan suhu 10°C laju reaksi menjadi 2 kali lebih cepat. Jika pada 20°C reaksi berlangsung 80 detik, pada suhu 50°C reaksi berlangsung selama...", options: ["10 detik", "20 detik", "40 detik", "5 detik", "15 detik"], ans: 0 },
+                        { id: "3_d9", type: "pg", topic: "Hubungan Kc Kp", q: "Rumus hubungan antara Kp dan Kc adalah Kp = Kc(RT)^Δn. Nilai Δn dihitung dari...", options: ["Selisih koefisien produk gas dan reaktan gas", "Jumlah seluruh koefisien reaksi", "Selisih molekul reaktan dan produk", "Jumlah mol zat cair", "Selisih massa reaktan dan produk"], ans: 0 },
+                        { id: "3_d10", type: "pg", topic: "Teori Tumbukan", q: "Tumbukan yang menghasilkan reaksi kimia dinamakan...", options: ["Tumbukan efektif", "Tumbukan lenting sempurna", "Tumbukan acak", "Tumbukan lambat", "Tumbukan elastis"], ans: 0 }
+                    ],
+                    tka: [
+                        { id: "3_t1", type: "pg", topic: "Penentuan Orde Reaksi", q: "Data eksperimen A + B → C:<br>[A]=0,1 M, [B]=0,1 M → v = 2×10⁻³ M/s<br>[A]=0,2 M, [B]=0,1 M → v = 8×10⁻³ M/s<br>[A]=0,1 M, [B]=0,3 M → v = 6×10⁻³ M/s<br>Persamaan laju reaksi tersebut adalah...", options: ["v = k [A]² [B]", "v = k [A] [B]", "v = k [A] [B]²", "v = k [A]²", "v = k [B]²"], ans: 0 },
+                        { id: "3_t2", type: "pg", topic: "Perhitungan Kc", q: "Dalam wadah 2 Liter dimasukkan 4 mol gas HI dan terurai menurut reaksi: 2HI(g) ⇌ H₂(g) + I₂(g). Jika saat setimbang terbentuk 1 mol H₂, nilai Kc adalah...", options: ["0,25", "0,50", "0,125", "1,00", "2,00"], ans: 0 },
+                        { id: "3_t3", type: "pg", topic: "Perhitungan Kp", q: "Pada reaksi kesetimbangan N₂O₄(g) ⇌ 2NO₂(g), jika tekanan total gas pada kesetimbangan adalah 3 atm dan derajat disosiasi α = 0,5, nilai Kp adalah...", options: ["4 atm", "2 atm", "1 atm", "0,5 atm", "8 atm"], ans: 0 },
+                        { id: "3_t4", type: "pg", topic: "Derajat Ionisasi", q: "Sebanyak 0,1 mol asam lemah HA dilarutkan dalam air hingga 1 Liter. Jika [H⁺] dalam larutan adalah 10⁻³ M, derajat ionisasi (α) asam tersebut adalah...", options: ["0,01 (1%)", "0,1 (10%)", "0,001 (0,1%)", "0,05 (5%)", "0,5 (50%)"], ans: 0 },
+                        { id: "3_t5", type: "pg", topic: "Energi Aktivasi", q: "Keberadaan katalis dalam reaksi kimia mempercepat laju reaksi dengan cara...", options: ["Menyediakan jalur reaksi alternatif dengan energi aktivasi (Ea) lebih rendah", "Menaikkan energi kinetik molekul reaktan", "Meningkatkan perubahan entalpi reaksi (ΔH)", "Mengubah tetapan kesetimbangan Kc", "Menambah jumlah molekul reaktan"], ans: 0 },
+                        { id: "3_tka1", type: "pg", topic: "Literasi - Industri Amonia (Haber-Bosch)", q: "<strong>Wacana Literasi:</strong> Proses Haber-Bosch sintesis amonia: N₂(g) + 3H₂(g) ⇌ 2NH₃(g) ΔH = -92 kJ. Secara teoritis, suhu rendah dan tekanan tinggi menghasilkan rendemen NH₃ maksimal. Namun di industri digunakan suhu sedang (~450°C) dan katalis Fe.<br><br>Alasan penggunaan suhu 450°C (bukan suhu kamar) di industri adalah...", options: ["Agar laju reaksi cukup cepat mencapai kesetimbangan tanpa menurunkan rendemen secara drastis", "Agar reaksi berubah menjadi endoterm", "Agar katalis Fe tidak rusak", "Untuk menghemat konsumsi energi secara total", "Untuk mengubah nilai Kc menjadi tak terhingga"], ans: 0 },
+                        { id: "3_tka2", type: "pg_kompleks", topic: "Numerasi - Laju Reaksi", q: "Suatu reaksi orde satu A → B memiliki waktu paruh (t½) = 20 menit. Pilihlah pernyataan yang <strong>BENAR</strong>! (Pilih lebih dari satu)", options: ["Setelah 40 menit, sisa reaktan A adalah 25%", "Setelah 60 menit, reaktan A yang telah bereaksi adalah 87,5%", "Laju reaksi tidak bergantung pada konsentrasi A", "Tetapan laju reaksi k = 0,693 / 20 menit"], ans: [0, 1, 3] },
+                        { id: "3_tka3", type: "pg", topic: "Literasi - Pengawetan Makanan", q: "Menyimpan makanan di dalam lemari es bertujuan mencegah makanan cepat basi. Ditinjau dari konsep laju reaksi, alasan ilmiah hal ini terjadi adalah...", options: ["Suhu rendah menurunkan energi kinetik molekul sehingga laju reaksi pembusukan melambat", "Suhu rendah bekerja sebagai katalis pembusukan", "Suhu rendah meningkatkan konsentrasi bakteri", "Suhu rendah menurunkan energi aktivasi reaksi", "Suhu rendah menghilangkan seluruh kuman"], ans: 0 },
+                        { id: "3_tka4", type: "pg_kompleks", topic: "Analisis Larutan Elektrolit", q: "Diberikan data uji hantar listrik tiga larutan X, Y, Z:<br>• Larutan X: Lampu terang, gelembung banyak.<br>• Larutan Y: Lampu padam, tidak ada gelembung.<br>• Larutan Z: Lampu redup, gelembung sedikit.<br>Manakah identifikasi yang <strong>BENAR</strong>? (Pilih lebih dari satu)", options: ["X dapat berupa larutan H₂SO₄", "Y dapat berupa larutan Sukrosa (Gula)", "Z dapat berupa larutan CH₃COOH", "Y merupakan elektrolit paling kuat"], ans: [0, 1, 2] },
+                        { id: "3_tka5", type: "pg", topic: "Literasi - Kembang Api", q: "Kembang api meledak sangat cepat (sepersekian detik) sementara besi berkarat memakan waktu berbulan-bulan. Perbedaan laju kedua reaksi kimia ini terutama disebabkan oleh...", options: ["Sifat alami reaktan dan besarnya energi aktivasi reaksi", "Perbedaan massa total zat", "Suhu udara luar", "Tekanan atmosfer", "Keberadaan molekul air"], ans: 0 }
+                    ]
+                }
+            },
+            // Pertemuan 4
+            {
+                id: 4,
+                badge: "Pertemuan 4",
+                title: "Asam Basa, Hidrolisis, Penyangga, Ksp & Titrasi",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Konsep Asam Basa & Perhitungan pH</h3>
+                    <p class="mb-2"><strong>Teori Brønsted-Lowry:</strong> Asam = Donor proton (H⁺), Basa = Akseptor proton.</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Rumus pH Asam & Basa:</p>
+                        <p class="text-xs">• Asam Kuat: \\( [H^+] = a \\cdot M_a \\quad \\rightarrow \\quad pH = -\\log[H^+] \\)</p>
+                        <p class="text-xs mt-1">• Asam Lemah: \\( [H^+] = \\sqrt{K_a \\cdot M_a} \\)</p>
+                        <p class="text-xs mt-1">• Basa Kuat: \\( [OH^-] = b \\cdot M_b \\quad \\rightarrow \\quad pOH = -\\log[OH^-], \\quad pH = 14 - pOH \\)</p>
+                        <p class="text-xs mt-1">• Basa Lemah: \\( [OH^-] = \\sqrt{K_b \\cdot M_b} \\)</p>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">2. Larutan Penyangga (Buffer) vs Hidrolisis Garam</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 my-2">
+                        <div class="p-3 bg-blue-50 rounded-xl text-xs">
+                            <p class="font-bold text-blue-800 mb-1">Larutan Penyangga (Buffer):</p>
+                            <p class="text-slate-600">Sisa Asam Lemah + Basa Konjugasi.<br>Menjaga pH relatif konstan.</p>
+                            <p class="font-mono mt-1 text-blue-900">\\( [H^+] = K_a \\cdot \\frac{n_{\\text{asam}}}{n_{\\text{garam}}} \\)</p>
+                        </div>
+                        <div class="p-3 bg-amber-50 rounded-xl text-xs">
+                            <p class="font-bold text-amber-800 mb-1">Hidrolisis Garam:</p>
+                            <p class="text-slate-600">Asam Lemah + Basa Kuat bereaksi habis!</p>
+                            <p class="font-mono mt-1 text-amber-900">\\( [OH^-] = \\sqrt{\\frac{K_w}{K_a} \\cdot M_{\\text{garam}}} \\)</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">3. Titrasi & Hasil Kali Kelarutan (Ksp)</h3>
+                    <p class="mb-2">• Titrasi Asam Basa: \\( V_a \\cdot M_a \\cdot a = V_b \\cdot M_b \\cdot b \\)</p>
+                    <p class="mb-2">• Ksp (Kelarutan s): Untuk senyawa \\( A_x B_y \\rightleftharpoons x A^{y+} + y B^{x-} \\), maka \\( K_{sp} = x^x \\cdot y^y \\cdot s^{x+y} \\)</p>
+
+                    <div class="example-box">
+                        <p class="font-bold text-emerald-800 text-xs uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>Contoh Soal Penyangga:</p>
+                        <p class="text-xs">100 mL CH₃COOH 0,2 M (Ka = 10⁻⁵) dicampur dengan 100 mL NaOH 0,1 M. Berapa pH campuran?</p>
+                        <p class="text-xs text-slate-600 mt-2"><strong>Pembahasan:</strong><br>
+                        n CH₃COOH = 100 × 0,2 = 20 mmol.<br>
+                        n NaOH = 100 × 0,1 = 10 mmol.<br>
+                        Sisa CH₃COOH = 20 - 10 = 10 mmol. Terbentuk CH₃COONa = 10 mmol.<br>
+                        \\( [H^+] = 10^{-5} \\cdot (10 / 10) = 10^{-5} \\quad \\rightarrow \\quad pH = 5 \\).
+                        </p>
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "4_d1", type: "pg", topic: "Asam Basa", q: "Larutan HCl 0,01 M memiliki pH sebesar...", options: ["2", "1", "3", "12", "13"], ans: 0 },
+                        { id: "4_d2", type: "pg", topic: "Asam Basa", q: "Pasangan asam-basa konjugasi dari reaksi: NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ adalah...", options: ["NH₃ dan NH₄⁺", "NH₃ dan H₂O", "H₂O dan NH₄⁺", "NH₄⁺ dan OH⁻", "NH₃ dan OH⁻"], ans: 0 },
+                        { id: "4_d3", type: "pg", topic: "Hidrolisis Garam", q: "Garam berikut yang mengalami hidrolisis total dalam air adalah...", options: ["CH₃COONH₄", "NaCl", "CH₃COONa", "NH₄Cl", "K₂SO₄"], ans: 0 },
+                        { id: "4_d4", type: "pg", topic: "Larutan Penyangga", q: "Komponen penyusun larutan penyangga asam terdiri dari...", options: ["Asam lemah dan basa konjugasinya", "Asam kuat dan basa kuat", "Asam lemah dan basa kuat berlebih", "Basa lemah dan asam kuat berlebih", "Garam netral"], ans: 0 },
+                        { id: "4_d5", type: "pg", topic: "Ksp", q: "Hubungan antara kelarutan (s) dan Ksp untuk garam AgCl (1:1) adalah...", options: ["Ksp = s²", "Ksp = 4s³", "Ksp = 27s⁴", "Ksp = s", "Ksp = 2s²"], ans: 0 },
+                        { id: "4_d6", type: "pg", topic: "Titrasi Asam Basa", q: "Indikator yang paling cocok digunakan untuk titrasi asam kuat dengan basa kuat adalah...", options: ["Fenolftalein (PP)", "Metil Jingga", "UniversaI", "Lakmus merah", "Kunyit"], ans: 0 },
+                        { id: "4_d7", type: "pg", topic: "pH Garam", q: "Garam CH₃COONa yang dilarutkan dalam air akan bersifat...", options: ["Basa (pH > 7)", "Asam (pH < 7)", "Netral (pH = 7)", "Amfoter", "Tidak terhidrolisis"], ans: 0 },
+                        { id: "4_d8", type: "pg", topic: "Buffer Darah", q: "Sistem penyangga utama dalam cairan luar sel darah manusia untuk menjaga pH darah normal (~7,4) adalah...", options: ["H₂CO₃ / HCO₃⁻", "H₂PO₄⁻ / HPO₄²⁻", "Hemoglobin", "CH₃COOH / CH₃COO⁻", "NH₃ / NH₄⁺"], ans: 0 },
+                        { id: "4_d9", type: "pg", topic: "Ksp & Pengendapan", q: "Endapan akan mulai terbentuk jika harga Hasil Kali Konsentrasi Ion (Qsp) memenuhi...", options: ["Qsp > Ksp", "Qsp < Ksp", "Qsp = Ksp", "Qsp = 0", "Ksp = 1"], ans: 0 },
+                        { id: "4_d10", type: "pg", topic: "Asam Lemah", q: "Larutan CH₃COOH 0,1 M dengan Ka = 10⁻⁵ memiliki pH...", options: ["3", "2", "4", "5", "1"], ans: 0 }
+                    ],
+                    tka: [
+                        { id: "4_t1", type: "pg", topic: "pH Campuran Buffer", q: "Sebanyak 100 mL larutan CH₃COOH 0,2 M (Ka = 10⁻⁵) dicampur dengan 50 mL larutan NaOH 0,2 M. pH larutan yang terbentuk adalah...", options: ["5", "5 - log 2", "5 + log 2", "9", "4"], ans: 0 },
+                        { id: "4_t2", type: "pg", topic: "pH Hidrolisis Garam", q: "Massa CH₃COONa (Mr = 82) yang harus dilarutkan dalam air hingga volume 500 mL agar diperoleh larutan dengan pH = 9 (Ka CH₃COOH = 10⁻⁵) adalah...", options: ["4,1 gram", "8,2 gram", "2,05 gram", "0,82 gram", "16,4 gram"], ans: 0 },
+                        { id: "4_t3", type: "pg", topic: "Perhitungan Ksp", q: "Jika kelarutan Ag₂CrO₄ dalam air murni adalah 10⁻⁴ M, nilai Ksp Ag₂CrO₄ adalah...", options: ["4 × 10⁻¹²", "10⁻⁸", "2 × 10⁻¹²", "4 × 10⁻⁸", "10⁻¹²"], ans: 0 },
+                        { id: "4_t4", type: "pg", topic: "Ion Senama Ksp", q: "Kelarutan AgCl (Ksp = 1,8 × 10⁻¹⁰) paling kecil jika dilarutkan dalam larutan...", options: ["AgNO₃ 0,1 M", "Air murni", "NaCl 0,01 M", "CaCl₂ 0,01 M", "Glukosa 0,1 M"], ans: 0 },
+                        { id: "4_t5", type: "pg", topic: "Titrasi Numerasi", q: "Sebanyak 20 mL larutan H₂SO₄ dititrasi dengan larutan NaOH 0,1 M. Titik ekuivalen tercapai saat volume NaOH yang terpakai rata-rata 30 mL. Konsentrasi H₂SO₄ tersebut adalah...", options: ["0,075 M", "0,15 M", "0,30 M", "0,05 M", "0,10 M"], ans: 0 },
+                        { id: "4_tka1", type: "pg", topic: "Literasi - Asidosis Darah", q: "<strong>Wacana Literasi:</strong> Penderita diabetes melitus dapat mengalami ketoasidosis, yaitu kondisi penurunan pH darah di bawah 7,35 akibat penumpukan asam keto. Tubuh merespons dengan mempercepat pernapasan (hiperventilasi) untuk mengeluarkan gas CO₂.<br><br>Berdasarkan sistem penyangga H₂CO₃ / HCO₃⁻, membuang CO₂ melalui pernapasan akan menurunkan konsentrasi H₂CO₃ sehingga...", options: ["Kesetimbangan bergeser ke kiri, menurunkan [H⁺] dan menaikkan pH kembali normal", "Kesetimbangan bergeser ke kanan, meningkatkan [H⁺]", "pH darah makin menurun drastis", "Kapasitas buffer darah menjadi habis total", "Sistem penyangga berubah menjadi hidrolisis"], ans: 0 },
+                        { id: "4_tka2", type: "pg_kompleks", topic: "Numerasi - Kurva Titrasi", q: "Titrasi 25 mL CH₃COOH 0,1 M dengan NaOH 0,1 M menghasilkan kurva titrasi. Pilihlah pernyataan yang <strong>BENAR</strong>! (Pilih lebih dari satu)", options: ["Titik ekuivalen berada pada pH > 7 (bersifat basa)", "Pada setengah titik ekuivalen (12,5 mL NaOH), pH = pKa CH₃COOH", "Indikator Fenolftalein (trayek 8,3-10) tepat digunakan", "Titik ekuivalen berada tepat pada pH 7,0"], ans: [0, 1, 2] },
+                        { id: "4_tka3", type: "pg", topic: "Literasi - Hujan Asam", q: "Air hujan alami memiliki pH sekitar 5,6 karena melarutkan CO₂ udara. Namun, hujan asam memiliki pH < 5,0 akibat polutan gas SO₂ dan NOₓ. Dampak utama hujan asam terhadap tanah pertanian adalah...", options: ["Melarutkan dan membilas hara penting (seperti Ca²⁺ dan Mg²⁺) serta melepaskan ion Al³⁺ yang beracun bagi tanaman", "Menyebabkan pH tanah menjadi sangat basa", "Meningkatkan kesuburan tanah secara mendadak", "Menghilangkan seluruh kadar air tanah", "Membunuh seluruh cacing tanah tanpa merusak hara"], ans: 0 },
+                        { id: "4_tka4", type: "pg_kompleks", topic: "Analisis Kelarutan Ksp", q: "Kedalam 100 mL larutan yang mengandung ion Ca²⁺ 0,01 M dan Ba²⁺ 0,01 M ditambahkan larutan Na₂SO₄ padat secara perlahan. (Ksp CaSO₄ = 2,4×10⁻⁵, Ksp BaSO₄ = 1,0×10⁻¹⁰). Manakah kesimpulan yang <strong>BENAR</strong>? (Pilih lebih dari satu)", options: ["BaSO₄ akan mengendap terlebih dahulu sebelum CaSO₄", "Endapan BaSO₄ mulai terbentuk saat [SO₄²⁻] > 1,0×10⁻⁸ M", "Pemisahan ion Ba²⁺ dan Ca²⁺ dapat dilakukan dengan pengendapan bertingkat", "CaSO₄ mengendap lebih dulu daripada BaSO₄"], ans: [0, 1, 2] },
+                        { id: "4_tka5", type: "pg", topic: "Literasi Obat Maag", q: "Obat maag antasida mengandung senyawa Mg(OH)₂ dan Al(OH)₃ yang berfungsi menetralkan kelebihan asam lambung (HCl). Mekanisme kerja obat ini tergolong reaksi...", options: ["Netralisasi asam-basa menghasilkan garam dan air", "Redoks dan pembentukan gas", "Hidrolisis asam", "Pengendapan ion klorida", "Oksidasi asam lambung"], ans: 0 }
+                    ]
+                }
+            },
+            // Pertemuan 5
+            {
+                id: 5,
+                badge: "Pertemuan 5",
+                title: "Sifat Koligatif, Redoks, Sel Volta, Kimia Karbon & Makromolekul",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Sifat Koligatif Larutan</h3>
+                    <p class="mb-2">Sifat larutan yang hanya bergantung pada jumlah partikel zat terlarut, bukan jenisnya.</p>
+                    <div class="formula-box">
+                        <p class="font-bold text-blue-900 mb-1">Rumus Sifat Koligatif (Non-elektrolit):</p>
+                        <ul class="text-xs space-y-1 text-slate-700">
+                            <li>• Penurunan Tekanan Uap: \\( \\Delta P = P^\\circ \\cdot X_{\\text{terlarut}} \\)</li>
+                            <li>• Kenaikan Titik Didih: \\( \\Delta T_b = m \\cdot K_b \\)</li>
+                            <li>• Penurunan Titik Beku: \\( \\Delta T_f = m \\cdot K_f \\)</li>
+                            <li>• Tekanan Osmotik: \\( \\pi = M \\cdot R \\cdot T \\)</li>
+                            <li>*Untuk elektrolit dikalikan faktor van 't Hoff: \\( i = 1 + (n-1)\\alpha \\)</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">2. Elektrokimia (Sel Volta & Elektrolisis)</h3>
+                    <p class="mb-2">• <strong>Sel Volta:</strong> Kimia → Listrik. Katoda (+) Reduksi, Anoda (-) Oksidasi (KNAP).<br>
+                    \\( E^\\circ_{\\text{sel}} = E^\\circ_{\\text{katoda}} - E^\\circ_{\\text{anoda}} \\)<br>
+                    • <strong>Hukum Faraday I:</strong> \\( w = \\frac{e \\cdot i \\cdot t}{96500} \\) dengan \\( e = \\frac{Ar}{n} \\)</p>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 mt-6">3. Kimia Karbon, Benzena & Makromolekul</h3>
+                    <div class="overflow-x-auto my-2">
+                        <table class="w-full text-xs border border-slate-200">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="p-1.5 border">Gugus Fungsi</th>
+                                    <th class="p-1.5 border">Golongan</th>
+                                    <th class="p-1.5 border">Rumus Umum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="p-1.5 border">-OH</td><td class="p-1.5 border">Alkohol (Alkanol)</td><td class="p-1.5 border">CₙH₂ₙ₊₂O</td></tr>
+                                <tr><td class="p-1.5 border">-O-</td><td class="p-1.5 border">Eter (Alkoksialkana)</td><td class="p-1.5 border">CₙH₂ₙ₊₂O</td></tr>
+                                <tr><td class="p-1.5 border">-CHO</td><td class="p-1.5 border">Aldehid (Alkanal)</td><td class="p-1.5 border">CₙH₂ₙO</td></tr>
+                                <tr><td class="p-1.5 border">-CO-</td><td class="p-1.5 border">Keton (Alkanon)</td><td class="p-1.5 border">CₙH₂ₙO</td></tr>
+                                <tr><td class="p-1.5 border">-COOH</td><td class="p-1.5 border">Asam Karboksilat</td><td class="p-1.5 border">CₙH₂ₙO₂</td></tr>
+                                <tr><td class="p-1.5 border">-COO-</td><td class="p-1.5 border">Ester (Alkil Alkanoat)</td><td class="p-1.5 border">CₙH₂ₙO₂</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="example-box">
+                        <p class="font-bold text-emerald-800 text-xs uppercase mb-1"><i class="fas fa-lightbulb mr-1"></i>Contoh Soal Sel Volta:</p>
+                        <p class="text-xs">Diketahui E° Zn²⁺|Zn = -0,76 V dan E° Cu²⁺|Cu = +0,34 V. Tentukan E°sel reaksi tersebut!</p>
+                        <p class="text-xs text-slate-600 mt-2"><strong>Pembahasan:</strong><br>
+                        Cu memiliki E° lebih positif → Katoda (Reduksi).<br>
+                        Zn memiliki E° lebih negatif → Anoda (Oksidasi).<br>
+                        \\( E^\\circ_{\\text{sel}} = E^\\circ_{\\text{katoda}} - E^\\circ_{\\text{anoda}} = (+0,34) - (-0,76) = +1,10 \\text{ Volt} \\).
+                        </p>
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "5_d1", type: "pg", topic: "Sifat Koligatif", q: "Di antara larutan berikut yang memiliki titik didih paling tinggi adalah...", options: ["Na₂SO₄ 0,1 M (i=3)", "Glukosa 0,1 M (i=1)", "NaCl 0,1 M (i=2)", "Urea 0,1 M (i=1)", "CH₃COOH 0,1 M"], ans: 0 },
+                        { id: "5_d2", type: "pg", topic: "Tekanan Osmotik", q: "Penerapan sifat koligatif tekanan osmotik dalam kehidupan sehari-hari adalah...", options: ["Penggunaan cairan infus pada pasien di rumah sakit", "Penggunaan etilen glikol pada radiator mobil", "Penebaran garam untuk mencairkan salju", "Proses pembuatan es puter", "Penyulingan minyak bumi"], ans: 0 },
+                        { id: "5_d3", type: "pg", topic: "Sel Volta", q: "Pada sel Volta, proses oksidasi terjadi pada elektroda...", options: ["Anoda (bermuatan negatif)", "Katoda (bermuatan positif)", "Keduanya", "Jembatan garam", "Elektrolit"], ans: 0 },
+                        { id: "5_d4", type: "pg", topic: "Elektrolisis", q: "Pada elektrolisis larutan NaCl dengan elektroda karbon, gas yang dihasilkan di anoda adalah...", options: ["Gas Klorin (Cl₂)", "Gas Oksigen (O₂)", "Gas Hidrogen (H₂)", "Logam Natrium", "Uap air"], ans: 0 },
+                        { id: "5_d5", type: "pg", topic: "Gugus Fungsi", q: "Senyawa dengan rumus molekul C₃H₈O yang berisomer fungsi dengan 1-propanol adalah...", options: ["Metoksi etana (Eter)", "Propanal", "Propanon", "Asam propanoat", "Metil etanoat"], ans: 0 },
+                        { id: "5_d6", type: "pg", topic: "Reaksi Karbon", q: "Reaksi pembuat ester dari asam karboksilat dan alkohol dengan katalis asam dinamakan...", options: ["Esterifikasi", "Saponifikasi", "Oksidasi", "Adisi", "Polimerisasi"], ans: 0 },
+                        { id: "5_d7", type: "pg", topic: "Benzena", q: "Turunan benzena yang digunakan sebagai bahan pengawet makanan (asam benzoat) memiliki gugus fungsi...", options: ["-COOH", "-OH", "-NH₂", "-NO₂", "-CH₃"], ans: 0 },
+                        { id: "5_d8", type: "pg", topic: "Makromolekul", q: "Polimer berikut yang terbentuk melalui reaksi polimerisasi adisi adalah...", options: ["Polietilena (PE)", "Nilon 66", "Protein", "Karbohidrat", "Bakelit"], ans: 0 },
+                        { id: "5_d9", type: "pg", topic: "Uji Biokimia", q: "Uji Biuret pada sampel makanan memberikan warna ungu. Hal ini menunjukkan sampel mengandung...", options: ["Protein (Ikatan Peptida)", "Glukosa", "Amilum", "Lemak jenuh", "Vitamin C"], ans: 0 },
+                        { id: "5_d10", type: "pg", topic: "Hukum Faraday", q: "Jumlah muatan listrik 1 Faraday setara dengan...", options: ["1 mol elektron (96.500 Coulomb)", "1 gram zat", "1 Volt", "1 Ampere", "22,4 Liter gas"], ans: 0 }
+                    ],
+                    tka: [
+                        { id: "5_t1", type: "pg", topic: "Hukum Faraday II", q: "Arus listrik yang sama dialirkan ke dalam larutan AgNO₃ dan larutan CuSO₄. Jika terbentuk 10,8 gram perak (Ar Ag = 108), massa tembaga (Ar Cu = 63,5) yang diendapkan adalah...", options: ["3,175 gram", "6,35 gram", "12,7 gram", "1,58 gram", "31,75 gram"], ans: 0 },
+                        { id: "5_t2", type: "pg", topic: "Potensial Sel Standard", q: "Diketahui E° Mg²⁺|Mg = -2,37 V dan E° Ag⁺|Ag = +0,80 V. Notasi sel Volta dan potensial sel yang tepat adalah...", options: ["Mg | Mg²⁺ || Ag⁺ | Ag , E° = +3,17 V", "Ag | Ag⁺ || Mg²⁺ | Mg , E° = -3,17 V", "Mg²⁺ | Mg || Ag | Ag⁺ , E° = +1,57 V", "Mg | Mg²⁺ || Ag⁺ | Ag , E° = +1,57 V", "Ag⁺ | Ag || Mg | Mg²⁺ , E° = +3,17 V"], ans: 0 },
+                        { id: "5_t3", type: "pg", topic: "Penyetaraan Redoks", q: "Koefisien a, b, c pada penyetaraan reaksi redoks suasana asam: a MnO₄⁻ + b Fe²⁺ + H⁺ → c Mn²⁺ + Fe³⁺ + H₂O adalah...", options: ["1, 5, 1", "2, 5, 2", "1, 2, 1", "5, 1, 5", "1, 1, 1"], ans: 0 },
+                        { id: "5_t4", type: "pg", topic: "Identifikasi Senyawa Karbon", q: "Suatu senyawa C₃H₆O tidak bereaksi dengan pereaksi Fehling maupun Tollens. Senyawa tersebut adalah...", options: ["Propanon (Keton)", "Propanal (Aldehid)", "1-propanol", "Metoksi etana", "Asam propanoat"], ans: 0 },
+                        { id: "5_t5", type: "pg", topic: "Sifat Koligatif Elektrolit", q: "Sebanyak 11,7 gram NaCl (Mr = 58,5) dilarutkan dalam 500 gram air (Kf = 1,86 °C/molal). Jika NaCl terionisasi sempurna (α=1), penurunan titik beku larutan (ΔTf) adalah...", options: ["1,488 °C", "0,744 °C", "2,976 °C", "3,720 °C", "0,372 °C"], ans: 0 },
+                        { id: "5_tka1", type: "pg", topic: "Literasi - Anti-Beku Radiator", q: "<strong>Wacana Literasi:</strong> Etilen glikol (C₂H₆O₂, Mr = 62) dicampurkan ke dalam air radiator mobil di negara bermusim dingin untuk mencegah air radiator membeku pada suhu di bawah 0°C.<br><br>Jika dibutuhkan penurunan titik beku air radiator sebesar 9,3°C (Kf air = 1,86 °C/m), massa etilen glikol yang harus ditambahkan ke dalam 2 kg air adalah...", options: ["620 gram", "310 gram", "1240 gram", "155 gram", "62 gram"], ans: 0 },
+                        { id: "5_tka2", type: "pg_kompleks", topic: "Numerasi - Korosi & Pencegahan", q: "Besi (E° Fe²⁺|Fe = -0,44 V) dapat dilindungi dari korosi menggunakan metode perlindungan katodik. Pilihlah logam yang efektif dijadikan anoda kurban untuk melindungi besi! (Pilih lebih dari satu)", options: ["Magnesium (E° Mg²⁺|Mg = -2,37 V)", "Seng (E° Zn²⁺|Zn = -0,76 V)", "Tembaga (E° Cu²⁺|Cu = +0,34 V)", "Perak (E° Ag⁺|Ag = +0,80 V)"], ans: [0, 1] },
+                        { id: "5_tka3", type: "pg", topic: "Literasi - Industri Plastik", q: "Penggunaan kantong plastik sekali pakai berbahan Polietilena (PE) berdampak buruk bagi lingkungan karena sukar terurai secara hayati. Karakteristik ikatan kimia polimer PE yang menyebabkannya sangat stabil adalah...", options: ["Memiliki rantai karbon jenuh dengan ikatan kovalen tunggal C-C yang sangat kuat dan nonpolar", "Memiliki ikatan ester yang mudah terhidrolisis", "Memiliki ikatan hidrogen yang rapuh", "Mengandung cincin benzena yang mudah larut dalam air", "Memiliki ikatan ionik raksasa"], ans: 0 },
+                        { id: "5_tka4", type: "pg_kompleks", topic: "Analisis Uji Karbohidrat", q: "Suatu sampel bahan makanan diuji laboratorium:<br>1. Uji Molisch: Positif (terbentuk cincin ungu).<br>2. Uji Fehling: Positif (terbentuk endapan merah bata Cu₂O).<br>3. Uji Iodin: Negatif (tidak berwarna biru).<br>Manakah kesimpulan zat yang <strong>BENAR</strong>? (Pilih lebih dari satu)", options: ["Sampel tergolong Karbohidrat", "Sampel dapat berupa Glukosa atau Fruktosa", "Sampel pasti merupakan Amilum (Pati)", "Sampel merupakan Gula Pereduksi"], ans: [0, 1, 3] },
+                        { id: "5_tka5", type: "pg", topic: "Literasi - Pembuatan Sabun", q: "Reaksi pembuatan sabun (Saponifikasi) dilakukan dengan mereaksikan minyak/lemak (Trigliserida) dengan basa kuat seperti NaOH. Hasil samping bermanfaat yang diperoleh dari reaksi ini adalah...", options: ["Gliserol (Gliserin)", "Etanol", "Asam Asetat", "Gas Metana", "Eter"], ans: 0 }
+                    ]
+                }
+            },
+            // Pertemuan 6
+            {
+                id: 6,
+                badge: "Pertemuan 6",
+                title: "Try Out Keseluruhan (Simulasi UTBK & TKA Kimia 2026)",
+                materi: `
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Panduan Strategi & Trik Sukses TKA Kimia 2026</h3>
+                    <p class="mb-3">Try Out Komprehensif ini dirancang untuk menguji kesiapan konseptual, literasi sains, dan numerasi Kimia dari Pertemuan 1 hingga Pertemuan 5.</p>
+                    
+                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs space-y-2 mb-4">
+                        <p class="font-bold text-blue-900 text-sm"><i class="fas fa-bullseye mr-1"></i>Strategi Pengerjaan Soal HOTS / TKA:</p>
+                        <p>1. <strong>Literasi Kimia:</strong> Pahami fenomena dalam wacana. Identifikasi variabel bebas, terikat, dan konsep dasar kimia yang melandasinya.</p>
+                        <p>2. <strong>Numerasi Kimia:</strong> Perhatikan satuan (Molar, mol, gram, L, °C) dan konversi awal sebelum memasukkan angka ke rumus.</p>
+                        <p>3. <strong>Pilihan Ganda Kompleks:</strong> Teliti setiap opsi secara independen. Jangan terburu-buru menandai sebelum mengecek seluruh pilihan.</p>
+                    </div>
+
+                    <div class="p-3 bg-amber-50 rounded-xl text-xs text-amber-900">
+                        <strong>Pesan Pengampu (Fakhrunas Hidayat, M.Pd.):</strong> "Keberhasilan ujian bukan hanya tentang menghafal rumus, melainkan tentang ketajaman analisis dan ketenangan saat mengeksekusi soal. Kerjakan latihan di bawah ini secara mandiri!"
+                    </div>
+                `,
+                quizzes: {
+                    dasar: [
+                        { id: "6_d1", type: "pg", topic: "Struktur Atom", q: "Jumlah elektron maksimum yang dapat menempati kulit M (n = 3) adalah...", options: ["18 elektron", "8 elektron", "2 elektron", "32 elektron", "10 elektron"], ans: 0 },
+                        { id: "6_d2", type: "pg", topic: "Stoikiometri", q: "Jumlah molekul yang terdapat dalam 4,4 gram gas CO₂ (Mr = 44) adalah... (L = 6,02 × 10²³)", options: ["6,02 × 10²² molekul", "6,02 × 10²³ molekul", "1,204 × 10²³ molekul", "3,01 × 10²2 molekul", "6,02 × 10²⁴ molekul"], ans: 0 },
+                        { id: "6_d3", type: "pg", topic: "Termokimia", q: "Reaksi pembakaran sempurna gas metana melepas kalor sebesar 890 kJ. Persamaan termokimia yang tepat adalah...", options: ["CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l) ΔH = -890 kJ", "CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l) ΔH = +890 kJ", "CO₂(g) + 2H₂O(l) → CH₄(g) + 2O₂(g) ΔH = -890 kJ", "CH₄(g) → C(s) + 2H₂(g) ΔH = -890 kJ", "CH₄(g) + O₂(g) → CO(g) + 2H₂O(l) ΔH = -890 kJ"], ans: 0 },
+                        { id: "6_d4", type: "pg", topic: "Laju Reaksi", q: "Suatu reaksi memiliki rumus laju v = k [A] [B]². Jika konsentrasi A dan B masing-masing diperbesar 2 kali, laju reaksi menjadi...", options: ["8 kali lebih cepat", "4 kali lebih cepat", "2 kali lebih cepat", "16 kali lebih cepat", "6 kali lebih cepat"], ans: 0 },
+                        { id: "6_d5", type: "pg", topic: "Kesetimbangan", q: "Pada reaksi N₂O₄(g) ⇌ 2NO₂(g) (reaksi endoterm), warna cokelat NO₂ akan makin pekat jika...", options: ["Suhu sistem dinaikkan", "Suhu sistem diturunkan", "Tekanan sistem diperbesar", "Volume sistem diperkecil", "Ditambahkan katalis"], ans: 0 },
+                        { id: "6_d6", type: "pg", topic: "Asam Basa", q: "pH dari larutan Ca(OH)₂ 0,005 M adalah...", options: ["12", "2", "11", "13", "3"], ans: 0 },
+                        { id: "6_d7", type: "pg", topic: "Buffer", q: "Campuran yang menghasilkan larutan penyangga (buffer) adalah...", options: ["100 mL CH₃COOH 0,1 M + 50 mL NaOH 0,1 M", "100 mL HCl 0,1 M + 100 mL NaOH 0,1 M", "100 mL CH₃COOH 0,1 M + 100 mL NaOH 0,1 M", "50 mL CH₃COOH 0,1 M + 100 mL NaOH 0,1 M", "100 mL HCl 0,1 M + 50 mL NH₃ 0,1 M"], ans: 0 },
+                        { id: "6_d8", type: "pg", topic: "Elektrokimia", q: "Logam yang paling efisien melindungi besi dari korosi secara anoda kurban adalah logam yang memiliki...", options: ["Potensial reduksi standar (E°) lebih negatif dari besi", "Potensial reduksi standar (E°) lebih positif dari besi", "Massa jenis paling besar", "Nomor atom paling besar", "Jari-jari atom paling kecil"], ans: 0 },
+                        { id: "6_d9", type: "pg", topic: "Kimia Karbon", q: "Oksidasi sempurna dari etanol (alkohol primer) menggunakan K₂Cr₂O⇇/H⁺ akan menghasilkan...", options: ["Asam Asetat (Asam Karboksilat)", "Propanon (Keton)", "Dimetil Eter", "Metana", "Etena"], ans: 0 },
+                        { id: "6_d10", type: "pg", topic: "Sifat Koligatif", q: "Di antara fenomena berikut, yang merupakan penerapan penurunan titik beku adalah...", options: ["Penambahan garam pada es puter untuk membekukan adonan", "Penggunaan larutan infus", "Penyerapan air oleh akar tanaman", "Pengolahan air laut menjadi air tawar", "Cuci darah pada penderita ginjal"], ans: 0 }
+                    ],
+                    tka: [
+                        { id: "6_t1", type: "pg", topic: "Komprehensif Stoikiometri-Redoks", q: "Sebanyak 5,6 gram logam besi (Ar Fe = 56) dilarutkan dalam larutan HCl berlebih menurut reaksi: Fe(s) + 2HCl(aq) → FeCl₂(aq) + H₂(g). Volume gas H₂ yang dihasilkan pada kondisi STP adalah...", options: ["2,24 Liter", "4,48 Liter", "1,12 Liter", "22,4 Liter", "11,2 Liter"], ans: 0 },
+                        { id: "6_t2", type: "pg", topic: "Komprehensif Titrasi-pH", q: "Untuk menetralkan 50 mL sampel limbah cair yang mengandung H₂SO₄ dibutuhkan 20 mL NaOH 0,1 M. pH sampel limbah tersebut sebelum dititrasi adalah...", options: ["1,4 ( [H⁺] = 0,02 M )", "2,0", "1,0", "2,4", "3,0"], ans: 0 },
+                        { id: "6_t3", type: "pg", topic: "Komprehensif Ksp-Elektrolit", q: "Kelarutan PbI₂ dalam air murni adalah 10⁻³ M. Kelarutan PbI₂ dalam larutan KI 0,1 M adalah...", options: ["4 × 10⁻⁷ M", "10⁻⁷ M", "4 × 10⁻9 M", "10⁻⁵ M", "2 × 10⁻⁶ M"], ans: 0 },
+                        { id: "6_t4", type: "pg", topic: "Komprehensif Termokimia", q: "Pembakaran 0,16 gram gas metana (CH₄, Mr = 16) membebaskan kalor yang mampu menaikkan suhu 100 gram air sebesar 20°C (c = 4,2 J/g°C). Enthalpi pembakaran molar (ΔHc) metana adalah...", options: ["-840 kJ/mol", "-84 kJ/mol", "-420 kJ/mol", "-168 kJ/mol", "-8,4 kJ/mol"], ans: 0 },
+                        { id: "6_t5", type: "pg", topic: "Komprehensif Isomeri", q: "Jumlah isomer struktur yang dimiliki oleh senyawa alkana dengan rumus molekul C₅H₁₂ adalah...", options: ["3 (n-pentana, isopentana, neopentana)", "2", "4", "5", "6"], ans: 0 },
+                        { id: "6_tka1", type: "pg", topic: "TKA Literasi - Baterai Litium", q: "<strong>Wacana TKA:</strong> Baterai ion Litium merupakan komponen vital kendaraan listrik. Saat pengisian daya (charging), ion Li⁺ bergerak dari katoda LiCoO₂ menuju anoda grafit (C₆). Saat pemakaian (discharging), reaksi berlangsung sebaliknya membebaskan arus listrik.<br><br>Pernyataan yang tepat mengenai peristiwa saat pemakaian baterai (discharging) adalah...", options: ["Reaksi berlangsung spontan dalam sel Volta di mana Li pada anoda mengalami oksidasi", "Reaksi tergolong elektrolisis yang membutuhkan pasokan arus luar", "Katoda bermuatan negatif dan anoda bermuatan positif", "Ion Li⁺ mengendap menjadi logam litium padat di jembatan garam", "Tidak ada reaksi transfer elektron yang terjadi"], ans: 0 },
+                        { id: "6_tka2", type: "pg_kompleks", topic: "TKA Numerasi - Penyangga & Enzim", q: "Enzim pepsil di lambung bekerja optimal pada pH ~2,0. Di dalam laboratorium, dibuat larutan penyangga 100 mL HCOOH 0,1 M (Ka = 2×10⁻⁴) dan HCOONa 0,1 M. Pilihlah pernyataan yang <strong>BENAR</strong>! (Pilih lebih dari satu)", options: ["pH larutan penyangga tersebut adalah 4 - log 2 (~3,7)", "Jika ditambah sedikit HCl, pH larutan relatif tidak berubah", "Pasangan penyangga tersebut bekerja optimal pada pH kisaran 3,7", "Larutan tersebut tergolong hidrolisis total"], ans: [0, 1, 2] },
+                        { id: "6_tka3", type: "pg", topic: "TKA Literasi - Pengolahan Air", q: "Pada pengolahan air bersih, ditambahkan tawas KAl(SO₄)₂·12H₂O. Di dalam air, ion Al³⁺ terhidrolisis membentuk endapan gelatin Al(OH)₃ yang menyerap kotoran koloid. Sifat koloid yang dimanfaatkan dalam proses ini adalah...", options: ["Adsorpsi dan Koagulasi", "Efek Tyndall", "Gerak Brown", "Dialisis", "Elektroforesis"], ans: 0 },
+                        { id: "6_tka4", type: "pg_kompleks", topic: "TKA Analisis Struktur Unsur", q: "Suatu unsur R memiliki nomor atom 35 (<sub>35</sub>R). Pilihlah pernyataan yang <strong>BENAR</strong> mengenai unsur R! (Pilih lebih dari satu)", options: ["R terletak pada Periode 4, Golongan VIIA (Halogen)", "R memiliki 7 elektron valensi", "R cenderung menerima 1 elektron membentuk ion R⁻", "R merupakan logam alkali reaktif"], ans: [0, 1, 2] },
+                        { id: "6_tka5", type: "pg", topic: "TKA Numerasi - Efisiensi Reaksi", q: "Pada reaksi pembuatan gas etena: C₂H₅OH → C₂H₄ + H₂O, direaksikan 46 gram etanol (Mr = 46). Jika secara eksperimen hanya diperoleh 21 gram etena (Mr = 28), maka rendemen (persentase hasil) reaksi tersebut adalah...", options: ["75%", "50%", "80%", "60%", "90%"], ans: 0 }
+                    ]
+                }
+            }
+        ];
+
+        // Global State Variables
+        let currentMeetingId = 1;
+        let currentQuizData = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNavigation();
+            setupTabEvents();
+            setupSidebarEvents();
+        });
+
+        function renderNavigation() {
+            const navList = document.getElementById('nav-list');
+            navList.innerHTML = '';
+            
+            meetingsData.forEach((meeting) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <button onclick="loadMeeting(${meeting.id}, this)" class="w-full text-left p-3.5 hover:bg-slate-50 focus:outline-none transition border-l-4 border-transparent text-slate-700 flex items-center justify-between group">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition">${meeting.badge}</span>
+                            <p class="text-xs font-semibold text-slate-800 mt-1 line-clamp-1">${meeting.title.split(':')[1] || meeting.title}</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-slate-300 group-hover:text-blue-500 transition"></i>
+                    </button>
+                `;
+                navList.appendChild(li);
+            });
+        }
+
+        function selectFirstMeeting() {
+            const firstBtn = document.querySelector('#nav-list button');
+            if(firstBtn) loadMeeting(1, firstBtn);
+        }
+
+        function setupSidebarEvents() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-sidebar-btn');
+
+            function toggle() {
+                sidebar.classList.toggle('-translate-x-full');
+                overlay.classList.toggle('hidden');
+            }
+
+            if(mobileBtn) mobileBtn.addEventListener('click', toggle);
+            if(closeBtn) closeBtn.addEventListener('click', toggle);
+            if(overlay) overlay.addEventListener('click', toggle);
+        }
+
+        function setupTabEvents() {
+            document.querySelectorAll('.submenu-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    document.querySelectorAll('.submenu-tab').forEach(t => {
+                        t.classList.remove('text-blue-600', 'bg-white', 'shadow-sm');
+                        t.classList.add('text-slate-500');
+                    });
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    const targetTab = e.currentTarget;
+                    targetTab.classList.add('text-blue-600', 'bg-white', 'shadow-sm');
+                    targetTab.classList.remove('text-slate-500');
+
+                    const targetId = targetTab.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+
+                    if(window.MathJax) MathJax.typesetPromise();
+                });
+            });
+        }
+
+        function loadMeeting(id, btnElement) {
+            currentMeetingId = id;
+            const meeting = meetingsData.find(m => m.id === id);
+            if(!meeting) return;
+
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('meeting-content').classList.remove('hidden');
+
+            // Highlight nav
+            document.querySelectorAll('#nav-list button').forEach(b => {
+                b.classList.remove('border-blue-600', 'bg-blue-50/60');
+            });
+            if(btnElement) {
+                btnElement.classList.add('border-blue-600', 'bg-blue-50/60');
+            }
+
+            // Close sidebar on mobile
+            if(window.innerWidth < 768) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+                document.getElementById('sidebar-overlay').classList.add('hidden');
+            }
+
+            // Reset Tab to Materi
+            document.querySelector('.submenu-tab[data-target="materi-section"]').click();
+            exitQuiz();
+
+            // Render Content
+            document.getElementById('meeting-badge').textContent = meeting.badge;
+            document.getElementById('meeting-title').textContent = meeting.title;
+            document.getElementById('materi-body').innerHTML = meeting.materi;
+
+            // Generate Keys
+            renderKunciJawaban(meeting);
+
+            // Scroll top
+            document.getElementById('main-scroll').scrollTop = 0;
+
+            if(window.MathJax) MathJax.typesetPromise();
+        }
+
+        function renderKunciJawaban(meeting) {
+            const container = document.getElementById('kunci-body');
+            let html = '';
+
+            const buildSection = (quizList, title) => {
+                if(!quizList || quizList.length === 0) return '';
+                let secHtml = `<div class="bg-white p-4 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-800 text-sm mb-3 text-blue-700 flex items-center gap-2"><i class="fas fa-check-circle"></i>${title}</h4>
+                    <div class="space-y-3">`;
+                
+                quizList.forEach((q, idx) => {
+                    let keyText = '';
+                    if(q.type === 'pg') {
+                        keyText = `<strong>${String.fromCharCode(65 + q.ans)}</strong>. ${q.options[q.ans]}`;
+                    } else if(q.type === 'pg_kompleks') {
+                        keyText = q.ans.map(a => `<strong>[${String.fromCharCode(65 + a)}]</strong> ${q.options[a]}`).join('<br>');
+                    }
+                    secHtml += `
+                        <div class="p-3 bg-slate-50 rounded-lg text-xs border border-slate-100">
+                            <span class="font-bold text-slate-700">Soal ${idx + 1} (${q.topic}):</span>
+                            <div class="text-slate-800 mt-1">${keyText}</div>
+                        </div>
+                    `;
+                });
+                secHtml += `</div></div>`;
+                return secHtml;
+            };
+
+            html += buildSection(meeting.quizzes?.dasar, "Kunci Jawaban: Menu 1 - Latihan Soal Dasar");
+            html += buildSection(meeting.quizzes?.tka, "Kunci Jawaban: Menu 2 - Latihan Menengah & TKA");
+
+            container.innerHTML = html;
+        }
+
+        function startQuiz(type) {
+            const meeting = meetingsData.find(m => m.id === currentMeetingId);
+            currentQuizData = meeting.quizzes[type];
+
+            if(!currentQuizData || currentQuizData.length === 0) {
+                alert("Soal untuk sesi ini belum tersedia.");
+                return;
+            }
+
+            document.getElementById('latihan-menu').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+
+            document.getElementById('quiz-title-badge').textContent = type === 'dasar' ? 'Menu 1: Latihan Dasar (10 Soal)' : 'Menu 2: Latihan Menengah & TKA (10 Soal)';
+
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            renderQuestion();
+        }
+
+        function exitQuiz() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('latihan-menu').classList.remove('hidden');
+        }
+
+        function renderQuestion() {
+            const q = currentQuizData[currentQuestionIndex];
+            const area = document.getElementById('question-area');
+
+            let html = `
+                <div class="mb-4">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider mb-2">${q.topic}</span>
+                    <h4 class="text-sm md:text-base font-medium text-slate-800 leading-relaxed">${currentQuestionIndex + 1}. ${q.q}</h4>
+                </div>
+                <div class="space-y-2 mt-4">
+            `;
+
+            if(q.type === 'pg') {
+                q.options.forEach((opt, idx) => {
+                    const isChecked = userAnswers[currentQuestionIndex] === idx;
+                    html += `
+                        <label class="flex items-center p-3 border rounded-xl cursor-pointer text-xs md:text-sm transition-all ${isChecked ? 'bg-blue-50/80 border-blue-500 font-medium text-blue-900 shadow-sm' : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'}">
+                            <input type="radio" name="q_${currentQuestionIndex}" value="${idx}" class="form-radio text-blue-600 h-4 w-4" onchange="selectOption(${idx})" ${isChecked ? 'checked' : ''}>
+                            <span class="ml-3"><span class="font-bold mr-1">${String.fromCharCode(65 + idx)}.</span> ${opt}</span>
+                        </label>
+                    `;
+                });
+            } else if(q.type === 'pg_kompleks') {
+                const selectedArr = userAnswers[currentQuestionIndex] || [];
+                q.options.forEach((opt, idx) => {
+                    const isChecked = selectedArr.includes(idx);
+                    html += `
+                        <label class="flex items-start p-3 border rounded-xl cursor-pointer text-xs md:text-sm transition-all ${isChecked ? 'bg-indigo-50/80 border-indigo-500 font-medium text-indigo-900 shadow-sm' : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'}">
+                            <input type="checkbox" class="form-checkbox text-indigo-600 h-4 w-4 rounded mt-0.5" onchange="toggleOptionKompleks(${idx})" ${isChecked ? 'checked' : ''}>
+                            <span class="ml-3"><span class="font-bold mr-1">[${String.fromCharCode(65 + idx)}]</span> ${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `<p class="text-[11px] text-slate-400 italic mt-2">*Pilihan Ganda Kompleks: Anda dapat memilih lebih dari satu jawaban yang benar.</p>`;
+            }
+
+            html += `</div>`;
+            area.innerHTML = html;
+
+            // Nav Controls
+            document.getElementById('question-counter').textContent = `${currentQuestionIndex + 1} / ${currentQuizData.length}`;
+            document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
+
+            if(currentQuestionIndex === currentQuizData.length - 1) {
+                document.getElementById('btn-next').classList.add('hidden');
+                document.getElementById('btn-submit').classList.remove('hidden');
+            } else {
+                document.getElementById('btn-next').classList.remove('hidden');
+                document.getElementById('btn-submit').classList.add('hidden');
+            }
+
+            if(window.MathJax) MathJax.typesetPromise();
+        }
+
+        function selectOption(optIdx) {
+            userAnswers[currentQuestionIndex] = optIdx;
+            renderQuestion();
+        }
+
+        function toggleOptionKompleks(optIdx) {
+            if(!userAnswers[currentQuestionIndex]) userAnswers[currentQuestionIndex] = [];
+            const arr = userAnswers[currentQuestionIndex];
+            const i = arr.indexOf(optIdx);
+            if(i > -1) arr.splice(i, 1);
+            else arr.push(optIdx);
+            renderQuestion();
+        }
+
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            if(currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            if(currentQuestionIndex < currentQuizData.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        });
+
+        // Confirmation Modal Logic
+        function confirmSubmitQuiz() {
+            document.getElementById('confirm-modal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').classList.add('hidden');
+        }
+
+        function executeSubmitQuiz() {
+            closeConfirmModal();
+            processResults();
+        }
+
+        function processResults() {
+            let correctCount = 0;
+            const topicStats = {}; // { topic: { total, correct } }
+            const reviewArr = [];
+
+            currentQuizData.forEach((q, idx) => {
+                if(!topicStats[q.topic]) {
+                    topicStats[q.topic] = { total: 0, correct: 0 };
+                }
+                topicStats[q.topic].total++;
+
+                let isCorrect = false;
+                const uAns = userAnswers[idx];
+
+                if(q.type === 'pg') {
+                    isCorrect = uAns === q.ans;
+                } else if(q.type === 'pg_kompleks') {
+                    if(Array.isArray(uAns)) {
+                        const sortedU = [...uAns].sort().join(',');
+                        const sortedA = [...q.ans].sort().join(',');
+                        isCorrect = sortedU === sortedA;
+                    }
+                }
+
+                if(isCorrect) {
+                    correctCount++;
+                    topicStats[q.topic].correct++;
+                }
+
+                // Review generation
+                let uAnsText = '<span class="text-slate-400 italic">Tidak dijawab</span>';
+                let cAnsText = '';
+
+                if(q.type === 'pg') {
+                    if(uAns !== undefined) uAnsText = `${String.fromCharCode(65 + uAns)}. ${q.options[uAns]}`;
+                    cAnsText = `${String.fromCharCode(65 + q.ans)}. ${q.options[q.ans]}`;
+                } else {
+                    if(uAns && uAns.length > 0) uAnsText = uAns.map(a => `${String.fromCharCode(65 + a)}. ${q.options[a]}`).join('<br>');
+                    cAnsText = q.ans.map(a => `${String.fromCharCode(65 + a)}. ${q.options[a]}`).join('<br>');
+                }
+
+                reviewArr.push(`
+                    <div class="p-3.5 rounded-xl border text-xs ${isCorrect ? 'bg-emerald-50/60 border-emerald-200' : 'bg-rose-50/60 border-rose-200'}">
+                        <div class="flex items-start gap-2">
+                            <i class="fas ${isCorrect ? 'fa-check-circle text-emerald-600' : 'fa-times-circle text-rose-600'} text-base mt-0.5"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-slate-800 mb-1.5">${idx + 1}. ${q.q}</p>
+                                <div class="space-y-1">
+                                    <p class="text-slate-600"><strong>Jawaban Anda:</strong><br>${uAnsText}</p>
+                                    ${!isCorrect ? `<p class="text-emerald-800 font-medium mt-1"><strong>Kunci Jawaban:</strong><br>${cAnsText}</p>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+
+            const score = Math.round((correctCount / currentQuizData.length) * 100);
+
+            // Display Result
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('score-text').textContent = score;
+
+            // Topic Breakdown
+            const topicList = document.getElementById('topic-analysis');
+            topicList.innerHTML = '';
+
+            for(const [topic, stats] of Object.entries(topicStats)) {
+                const ratio = stats.correct / stats.total;
+                let statusBadge = '';
+
+                if(ratio >= 0.8) {
+                    statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fas fa-circle-check mr-1"></i>Menguasai</span>`;
+                } else if(ratio >= 0.5) {
+                    statusBadge = `<span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fas fa-circle-exclamation mr-1"></i>Cukup Menguasai</span>`;
+                } else {
+                    statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2.5 py-1 rounded-full"><i class="fas fa-circle-xmark mr-1"></i>Tidak Menguasai</span>`;
+                }
+
+                topicList.innerHTML += `
+                    <li class="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                        <span class="font-medium text-slate-700">${topic}</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-slate-500 font-semibold">${stats.correct}/${stats.total}</span>
+                            ${statusBadge}
+                        </div>
+                    </li>
+                `;
+            }
+
+            document.getElementById('answer-review').innerHTML = reviewArr.join('');
+            if(window.MathJax) MathJax.typesetPromise();
+        }
+    </script>
+</body>
+</html>
